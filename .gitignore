@@ -1,0 +1,6 @@
+# Keep the raw dataset out of the repository. Only the encrypted files in data/ are published.
+*.zip
+*.csv
+*.xlsx
+dados_privados/
+__pycache__/

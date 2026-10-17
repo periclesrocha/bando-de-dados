@@ -250,6 +250,50 @@ details ul { margin: 8px 0 0; padding-left: 18px; }
 .btn.primary:hover { background: var(--ink-2); }
 .lock-err { color: var(--err); font-size: 14px; font-weight: 500; }
 
+/* Próximo jogo */
+.nx-head { background: var(--band); color: var(--band-ink); border-top: 1px solid var(--band-line); }
+.nx-head .wrap { padding-block: 16px 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.nx-head .wrap > * { min-width: 0; }
+.nx-kicker { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--band-muted); }
+.nx-kicker .now { color: var(--band-ink); }
+.nx-tag { border: 1px solid var(--band-line); border-radius: 999px; padding: 1px 8px; font-size: 11px; letter-spacing: 0.04em; color: var(--band-ink); }
+.nx-title { margin: 0; font: 900 clamp(32px, 6vw, 54px)/0.92 var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; overflow-wrap: anywhere; }
+.nx-title .x { color: var(--band-muted); font-weight: 800; }
+.nx-meta { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14px; color: var(--band-muted); }
+.nx-meta strong { color: var(--band-ink); font-weight: 600; }
+.nx-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; margin-top: 4px; }
+.nx-list { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1 1 0; }
+.nx-list button, .nx-toggle { appearance: none; cursor: pointer; border: 1px solid var(--band-line); background: transparent; color: var(--band-muted); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; white-space: nowrap; min-height: 30px; }
+.nx-list button:hover, .nx-toggle:hover { color: var(--band-ink); border-color: var(--band-muted); }
+.nx-list button[aria-pressed="true"] { background: var(--band-ink); color: var(--band); border-color: var(--band-ink); }
+.nx-body { padding-block: 18px 4px; display: grid; gap: 18px; }
+.nx-bars { display: grid; gap: 8px; }
+.nx-bar { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 4px 12px; align-items: center; font-size: 13px; }
+.nx-bar .lbl { color: var(--ink-2); font-weight: 600; }
+.nx-bar .track { display: flex; gap: 2px; height: 14px; }
+.nx-bar .track span:first-child { border-radius: 4px 0 0 4px; } .nx-bar .track span:last-child { border-radius: 0 4px 4px 0; } .nx-bar .track span:only-child { border-radius: 4px; }
+.nx-bar .leg { grid-column: 2; color: var(--muted); font-variant-numeric: tabular-nums; }
+.form { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 4px; }
+.form i { font-style: normal; width: 24px; height: 24px; border-radius: 4px; display: grid; place-items: center; color: #fff; font-size: 11.5px; font-weight: 700; }
+.form i.v { background: var(--v); } .form i.e { background: var(--e); } .form i.d { background: var(--d); }
+.rlist.compact button { padding: 6px 4px; }
+.rlist .big .key { margin-right: 6px; vertical-align: 1px; }
+.facts-list { margin: 0; display: grid; gap: 0; }
+.facts-list div { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.facts-list div:last-child { border-bottom: 0; }
+.facts-list dt { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.facts-list dd { margin: 2px 0 0; font-size: 14px; }
+.scorers { list-style: none; margin: 0; padding: 0; }
+.scorers li { border-bottom: 1px solid var(--line); }
+.scorers li:last-child { border-bottom: 0; }
+.scorers button { appearance: none; border: 0; background: none; width: 100%; cursor: pointer; text-align: left; padding: 8px 4px; display: grid; grid-template-columns: 2.4ch minmax(0, 1fr) auto; gap: 10px; align-items: baseline; border-radius: 4px; }
+.scorers button:hover { background: var(--hover); }
+.scorers .pos { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.scorers .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scorers .gl { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.scorers .gl small { font-weight: 400; color: var(--muted); font-size: 12.5px; margin-left: 6px; }
+.nx-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+
 @media (prefers-reduced-motion: no-preference) {
   .card, .kpis { animation: rise 0.35s ease-out both; }
   @keyframes rise { from { transform: translateY(4px); } to { transform: none; } }
@@ -263,6 +307,10 @@ details ul { margin: 8px 0 0; padding-left: 18px; }
     <p class="dek" id="dek">Todos os jogos do <strong>Corinthians</strong> desde 10 de setembro de 1910: resultados, confrontos, jogadores e a ficha técnica de cada partida.</p>
   </div>
 </header>
+<section id="nextup" aria-label="Próximo jogo" hidden>
+  <div class="nx-head"><div class="wrap" id="nx-head"></div></div>
+  <div class="wrap nx-body" id="nx-body"></div>
+</section>
 <nav class="tabbar" aria-label="Seções" hidden>
   <div class="wrap" role="tablist">
     <button class="tab" role="tab" id="tab-visao" aria-controls="p-visao" aria-selected="true" data-tab="visao">Visão geral</button>
@@ -419,6 +467,8 @@ details ul { margin: 8px 0 0; padding-left: 18px; }
         <li>Público e renda aparecem quando foram registrados, com mais frequência entre os anos 1970 e 1990.</li>
         <li>Minutos dos gols existem em parte dos jogos a partir de 2009. A fonte não registra assistências.</li>
         <li>Aproveitamento considera 3 pontos por vitória em todas as épocas, para permitir comparação.</li>
+        <li>O próximo jogo e o calendário vêm de <code>data/calendario.csv</code>, atualizado à mão. Os horários são de Brasília.</li>
+        <li>O "elenco atual" são os jogadores que entraram em campo na temporada mais recente da base.</li>
       </ul>
     </details>
   </div>
@@ -528,6 +578,7 @@ const S = {
   pq: '', psort: 'g', plimit: 50, player: null,
   gq: '', gres: new Set(['V', 'E', 'D']), gsort: 'desc', gpage: 0,
   adv: new Map(), minYear: 1910, maxYear: 2026,
+  upcoming: [], nx: 0, squad: new Set(), squadYear: 2026, coach: '',
 };
 
 // ---------- tooltip ----------
@@ -871,6 +922,182 @@ function renderOppDetail(list) {
   $('#h-games').innerHTML = gamesTable([...list].reverse());
 }
 
+// ---------- Próximo jogo (calendário em data/calendario.csv) ----------
+function parseCSV(txt) {
+  txt = txt.replace(/^﻿/, '');
+  const first = txt.split(/\r?\n/, 1)[0];
+  const sep = first.split(';').length > first.split(',').length ? ';' : ',';
+  const rows = []; let row = [], f = '', q = false;
+  for (let i = 0; i < txt.length; i++) {
+    const c = txt[i];
+    if (q) { if (c === '"') { if (txt[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === sep) { row.push(f); f = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && txt[i + 1] === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+    else f += c;
+  }
+  if (f !== '' || row.length) { row.push(f); rows.push(row); }
+  if (!rows.length) return [];
+  const hdr = rows.shift().map((h) => norm(h.trim()).replace(/\s+/g, '_'));
+  return rows.filter((r) => r.some((x) => x.trim())).map((r) => Object.fromEntries(hdr.map((h, i) => [h, (r[i] || '').trim()])));
+}
+function isoDate(s) {
+  s = (s || '').trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); // dd/mm/aaaa
+  return m ? `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}` : '';
+}
+async function loadCalendar() {
+  try {
+    const r = await fetch('data/calendario.csv', { cache: 'no-cache' });
+    if (!r.ok) return [];
+    const buf = await r.arrayBuffer();
+    let txt; try { txt = new TextDecoder('utf-8', { fatal: true }).decode(buf); } catch (e) { txt = new TextDecoder('windows-1252').decode(buf); }
+    return parseCSV(txt).map((r) => {
+      const home = r.mandante || '', away = r.visitante || '';
+      const h = norm(home) === 'corinthians';
+      return { d: isoDate(r.data), t: (r.hora || '').slice(0, 5), c: r.competicao || '', ph: r.rodada || '', home, away, h,
+        opp: r.adversario || (h ? away : home), s: r.estadio || '', ci: r.cidade || '', tv: r.onde_assistir || '',
+        conf: !/^n/.test(norm(r.confirmado || 'sim')), obs: r.observacoes || '' };
+    }).filter((g) => g.d && g.opp).sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t));
+  } catch (e) { return []; }
+}
+const pad2 = (n) => String(n).padStart(2, '0');
+const todayISO = () => { const t = new Date(); return `${t.getFullYear()}-${pad2(t.getMonth() + 1)}-${pad2(t.getDate())}`; };
+const daysUntil = (d) => Math.round((new Date(d + 'T12:00:00') - new Date(todayISO() + 'T12:00:00')) / 864e5);
+const horaBR = (t) => t ? t.replace(/^(\d{1,2}):00$/, '$1h').replace(/^(\d{1,2}):(\d{2})$/, '$1h$2') : '';
+const plural = (n, um, varios) => `${nf(n)} ${n === 1 ? um : varios}`;
+function resolveOpp(name) {
+  const n = norm(name);
+  return S.oppNames.find((o) => o === name) || S.oppNames.find((o) => norm(o) === n) || S.oppNames.find((o) => norm(o).startsWith(n + ' ')) || null;
+}
+function streakText(known) {
+  if (!known.length) return '';
+  const rs = known.map(res);
+  const run = (pred) => { let n = 0; for (let i = rs.length - 1; i >= 0 && pred(rs[i]); i--) n++; return n; };
+  const last = rs[rs.length - 1];
+  const unbeaten = run((r) => r !== 'D'), winless = run((r) => r !== 'V');
+  if (last === 'V') { const w = run((r) => r === 'V'); return plural(w, 'vitória seguida', 'vitórias seguidas') + (unbeaten > w ? ` · ${unbeaten} jogos sem perder` : ''); }
+  if (last === 'D') { const l = run((r) => r === 'D'); return plural(l, 'derrota seguida', 'derrotas seguidas') + (winless > l ? ` · ${winless} jogos sem vencer` : ''); }
+  return `${plural(unbeaten, 'jogo sem perder', 'jogos sem perder')} · ${plural(winless, 'jogo sem vencer', 'jogos sem vencer')}`;
+}
+const vedText = (s) => s.j ? `${s.v}V ${s.e}E ${s.d}D${s.k ? ` · aproveitamento ${pct(s.aprov)}` : ''}` : 'nenhum jogo';
+function renderNext() {
+  const box = $('#nextup');
+  if (!S.upcoming.length) { box.hidden = true; return; }
+  box.hidden = false;
+  const g = S.upcoming[S.nx];
+  const opp = resolveOpp(g.opp);
+  const days = daysUntil(g.d);
+  const quando = days === 0 ? 'Hoje' : days === 1 ? 'Amanhã' : `Em ${days} dias`;
+  const place = [g.s, g.ci].filter(Boolean).join(', ');
+  const open = store.get('bdd-nx') !== '0';
+  $('#nx-head').innerHTML = `
+    <p class="nx-kicker"><span class="now">${S.nx === 0 ? 'Próximo jogo' : 'Jogo seguinte'}</span><span>${esc([g.c, g.ph].filter(Boolean).join(' · '))}</span><span class="nx-tag">${quando}</span>${g.conf ? '' : '<span class="nx-tag">a confirmar</span>'}</p>
+    <h2 class="nx-title">${esc(g.home)} <span class="x">x</span> ${esc(g.away)}</h2>
+    <p class="nx-meta"><span><strong>${esc(place || 'Local a definir')}</strong></span><span><strong>${esc(weekday(g.d))}, ${esc(dLong(g.d))}</strong>${g.t ? ` · ${esc(horaBR(g.t))} (Brasília)` : ' · horário a definir'}</span><span>Onde assistir: <strong>${esc(g.tv || 'a definir')}</strong></span>${g.obs ? `<span>${esc(g.obs)}</span>` : ''}</p>
+    <div class="nx-row">
+      <div class="nx-list" role="group" aria-label="Próximos jogos">${S.upcoming.slice(0, 8).map((x, i) => `<button type="button" data-nx="${i}" aria-pressed="${i === S.nx}">${dBR(x.d).slice(0, 5)} · ${x.h ? '' : '@ '}${esc(x.opp)}</button>`).join('')}</div>
+      <button type="button" class="nx-toggle" id="nx-toggle" aria-expanded="${open}" aria-controls="nx-body">${open ? 'Ocultar retrospecto' : 'Ver retrospecto'}</button>
+    </div>`;
+  const body = $('#nx-body');
+  body.hidden = !open;
+  if (!open) return;
+  const list = opp ? S.all.filter((m) => m.o === opp) : [];
+  if (!list.length) { body.innerHTML = `<p class="notice">Não há jogos registrados entre Corinthians e ${esc(g.opp)}. Se for o primeiro confronto da história, ele aparece aqui depois que os dados forem atualizados. Se o time tem outro nome na base, ajuste a coluna <code>adversario</code> em <code>data/calendario.csv</code>.</p>`; return; }
+
+  const s = summarize(list);
+  const known = list.filter((m) => res(m));
+  const k = Math.max(1, s.k);
+  // elenco atual: quem entrou em campo na temporada mais recente da base
+  const agg = new Map();
+  for (const m of list) for (const x of m.L || []) {
+    if (typeof x[0] !== 'number' || !S.squad.has(x[0])) continue;
+    let a = agg.get(x[0]); if (!a) { a = { i: x[0], j: 0, g: 0 }; agg.set(x[0], a); }
+    a.j++; a.g += x[3] || 0;
+  }
+  const faced = [...agg.values()];
+  const scorers = faced.filter((a) => a.g > 0).sort((a, b) => b.g - a.g || a.j - b.j).slice(0, 8);
+  const mostGames = faced.filter((a) => !a.g).sort((a, b) => b.j - a.j).slice(0, Math.max(0, 4 - scorers.length));
+
+  const last10 = known.slice(-10);
+  const formHTML = last10.map((m) => { const r = res(m); return `<i class="${r.toLowerCase()}" title="${dBR(m.d)} · ${RES_NAME[r]}">${r}</i>`; }).join('');
+  const lastHTML = [...last10].reverse().map((m) => { const sl = scoreline(m); const r = res(m); return `<li><button data-id="${m.id}"><span class="big"><i class="key ${r.toLowerCase()}"></i>${sl.gh} x ${sl.ga}</span><span class="who">${esc(sl.home)} x ${esc(sl.away)}</span><span class="meta">${dBR(m.d)} · ${esc(m.c)}</span></button></li>`; }).join('');
+
+  const sideList = list.filter((m) => g.h ? m.h === 1 : m.h !== 1);
+  const venue = g.s ? list.filter((m) => m.s && (norm(m.s).includes(norm(g.s)) || norm(g.s).includes(norm(m.s)))) : [];
+  const fam = S.fams.find((f) => f !== 'Outros torneios' && norm(g.c).includes(norm(f)));
+  const famList = fam ? list.filter((m) => m.f === fam) : [];
+  const lastWin = [...known].reverse().find((m) => m.gf > m.ga);
+  const sinceWin = lastWin ? known.length - 1 - known.indexOf(lastWin) : null;
+  const bigW = known.filter((m) => m.gf > m.ga).sort((a, b) => (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf)[0];
+  const bigL = known.filter((m) => m.gf < m.ga).sort((a, b) => (b.ga - b.gf) - (a.ga - a.gf) || b.ga - a.ga)[0];
+  const scoreCount = new Map(); for (const m of known) { const key = `${m.gf}-${m.ga}`; scoreCount.set(key, (scoreCount.get(key) || 0) + 1); }
+  const [topScore, topScoreN] = [...scoreCount.entries()].sort((a, b) => b[1] - a[1])[0] || [];
+  const clean = known.filter((m) => m.ga === 0).length, blank = known.filter((m) => m.gf === 0).length;
+  const coachList = S.coach ? list.filter((m) => m.tc === S.coach) : [];
+  const crowd = list.filter((m) => m.pu).sort((a, b) => b.pu - a.pu)[0];
+  const line = (m) => { const sl = scoreline(m); return `<button class="linkbtn" data-id="${m.id}">${esc(sl.home)} ${sl.gh} x ${sl.ga} ${esc(sl.away)}</button>, ${dBR(m.d)}`; };
+  const facts = [
+    ['Momento', streakText(known)],
+    [g.h ? 'Com o Corinthians mandante' : 'Com o Corinthians visitante', vedText(summarize(sideList))],
+    venue.length ? [`No estádio ${g.s}`, vedText(summarize(venue))] : null,
+    fam ? [`Pelo ${fam}`, vedText(summarize(famList))] : null,
+    ['Última vitória', lastWin ? `${line(lastWin)}${sinceWin ? ` · há ${plural(sinceWin, 'jogo', 'jogos')}` : ' · no último jogo'}` : 'O Corinthians nunca venceu este adversário'],
+    bigW ? ['Maior vitória', line(bigW)] : null,
+    bigL ? ['Maior derrota', line(bigL)] : null,
+    topScore ? ['Placar mais comum', `${(([a, b]) => +a === +b ? `${a} x ${b}` : +a > +b ? `${a} x ${b} para o Corinthians` : `${b} x ${a} para o ${opp}`)(topScore.split('-'))} · ${plural(topScoreN, 'vez', 'vezes')}`] : null,
+    ['Média de gols por jogo', `${P1.format(s.gp / k)} marcados · ${P1.format(s.gc / k)} sofridos`],
+    ['Sem sofrer gol', `${plural(clean, 'jogo', 'jogos')} (${pct(clean / k)}) · sem marcar em ${plural(blank, 'jogo', 'jogos')}`],
+    S.coach ? [`${S.coach} contra o ${opp}`, coachList.length ? vedText(summarize(coachList)) : 'ainda não enfrentou este adversário'] : null,
+    ['Primeiro confronto', line(list[0])],
+    crowd ? ['Maior público', `${nf(crowd.pu)} · ${line(crowd)}`] : null,
+  ].filter((f) => f && f[1]);
+
+  const shareTxt = (n) => pct(n / k);
+  body.innerHTML = `
+    <div class="kpis" id="nx-kpis"></div>
+    <div class="nx-bars">
+      <div class="nx-bar"><span class="lbl">Resultados</span><div class="track">${['v', 'e', 'd'].filter((x) => s[x]).map((x) => `<span style="flex:${s[x]} 1 0;background:var(--${x})"></span>`).join('')}</div><span class="leg">${shareTxt(s.v)} vitórias · ${shareTxt(s.e)} empates · ${shareTxt(s.d)} derrotas</span></div>
+      <div class="nx-bar"><span class="lbl">Gols</span><div class="track">${s.gp ? `<span style="flex:${s.gp} 1 0;background:var(--v)"></span>` : ''}${s.gc ? `<span style="flex:${s.gc} 1 0;background:var(--d)"></span>` : ''}</div><span class="leg">${nf(s.gp)} pró (${pct(s.gp / Math.max(1, s.gp + s.gc))}) · ${nf(s.gc)} contra · saldo ${s.gp - s.gc >= 0 ? '+' : '−'}${nf(Math.abs(s.gp - s.gc))}</span></div>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-head"><div><h3>Últimos ${last10.length} jogos</h3><p class="sub">Do mais antigo ao mais recente</p></div></div>
+        <div class="form" aria-label="Sequência dos últimos resultados">${formHTML}</div>
+        <ul class="rlist compact">${lastHTML}</ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h3>Artilheiros do elenco</h3><p class="sub">Gols contra o ${esc(opp)} de quem entrou em campo em ${S.squadYear}</p></div></div>
+        ${scorers.length ? `<ul class="scorers">${scorers.map((a, i) => `<li><button data-pk="p${a.i}"><span class="pos">${i + 1}</span><span class="nm">${esc(S.players[a.i][1])}</span><span class="gl">${plural(a.g, 'gol', 'gols')}<small>${plural(a.j, 'jogo', 'jogos')}</small></span></button></li>`).join('')}</ul>` : `<p class="muted small">Nenhum jogador do elenco de ${S.squadYear} marcou contra o ${esc(opp)}.</p>`}
+        ${mostGames.length ? `<p class="small muted" style="margin:12px 0 4px">Mais jogos contra o ${esc(opp)}, sem gol</p><ul class="scorers">${mostGames.map((a) => `<li><button data-pk="p${a.i}"><span class="pos">·</span><span class="nm">${esc(S.players[a.i][1])}</span><span class="gl"><small>${plural(a.j, 'jogo', 'jogos')}</small></span></button></li>`).join('')}</ul>` : ''}
+        <p class="small muted" style="margin:12px 0 0">${plural(faced.length, 'jogador do elenco já enfrentou', 'jogadores do elenco já enfrentaram')} o ${esc(opp)}.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h3>Outros números</h3><p class="sub">Toda a história, todas as competições</p></div></div>
+        <dl class="facts-list">${facts.map(([t, v]) => `<div><dt>${esc(t)}</dt><dd>${v}</dd></div>`).join('')}</dl>
+      </div>
+    </div>
+    <div class="nx-foot"><p class="small muted" style="margin:0">Retrospecto de ${nf(s.j)} jogos, de ${yr(list[0])} a ${yr(list[list.length - 1])}. Não muda com os filtros abaixo.</p><button class="linkbtn" id="nx-h2h">Ver o confronto completo</button></div>`;
+  const kt = [
+    { lab: 'Jogos', val: nf(s.j), note: `desde ${yr(list[0])}` },
+    { lab: 'Vitórias', key: 'v', val: nf(s.v), note: shareTxt(s.v) },
+    { lab: 'Empates', key: 'e', val: nf(s.e), note: shareTxt(s.e) },
+    { lab: 'Derrotas', key: 'd', val: nf(s.d), note: shareTxt(s.d) },
+    { lab: 'Aproveitamento', val: pct(s.aprov), note: 'vitória = 3 pontos' },
+    { lab: 'Gols pró x contra', val: `${nf(s.gp)} x ${nf(s.gc)}`, note: `saldo ${s.gp - s.gc >= 0 ? '+' : '−'}${nf(Math.abs(s.gp - s.gc))}` },
+  ];
+  $('#nx-kpis').innerHTML = kt.map((t) => `<div class="kpi"><div class="lab">${t.key ? `<i class="key ${t.key}"></i>` : ''}${esc(t.lab)}</div><div class="val num">${esc(t.val)}</div><div class="note">${esc(t.note)}</div></div>`).join('');
+  $('#nx-h2h').onclick = () => { S.opp = opp; S.dirty.add('confrontos'); setTab('confrontos'); document.querySelector('.tabbar').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+}
+function bindNext() {
+  $('#nextup').addEventListener('click', (ev) => {
+    const b = ev.target.closest('[data-nx]'); if (b) { S.nx = +b.dataset.nx; renderNext(); return; }
+    if (ev.target.closest('#nx-toggle')) { const open = store.get('bdd-nx') === '0'; store.set('bdd-nx', open ? '1' : '0'); renderNext(); return; }
+    const p = ev.target.closest('[data-pk]'); if (p) { S.player = p.dataset.pk; S.dirty.add('jogadores'); setTab('jogadores'); $('#pl-detail').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+}
+
 // ---------- Jogadores ----------
 function playerKey(x) { return typeof x === 'number' ? 'p' + x : 'n' + x; }
 function playerInfo(key) {
@@ -1066,6 +1293,7 @@ function bindEvents() {
 // ---------- boot ----------
 async function boot() {
   try {
+    const calP = loadCalendar();
     const r = await fetch('data/jogos.json', { cache: 'no-cache' });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const raw = await r.json();
@@ -1082,6 +1310,12 @@ async function boot() {
     $('#gen').textContent = `Dados atualizados em ${dBR(doc.gerado)}.`;
     $('#loading').remove();
     setupFilters(); bindEvents();
+    const lastM = S.all[S.all.length - 1];
+    S.squadYear = yr(lastM); S.coach = lastM.tc || '';
+    S.squad = new Set(S.all.filter((m) => yr(m) === S.squadYear).flatMap((m) => (m.L || []).map((x) => x[0]).filter((x) => typeof x === 'number')));
+    const today = todayISO();
+    S.upcoming = (await calP).filter((g) => g.d >= today); S.nx = 0;
+    bindNext(); renderNext();
     const h = (location.hash || '').slice(1);
     const startTab = ['visao', 'confrontos', 'jogadores', 'jogos'].includes(h) ? h : 'visao';
     S.tab = startTab;

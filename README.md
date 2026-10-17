@@ -75,6 +75,26 @@ python tools/build_data.py path/to/dataset_corinthians_1910-2026.zip
 
 It asks for the site password (or reads it from the `BANDO_SENHA` environment variable) and never writes unencrypted files. Then commit and push `data/`. Keep the dataset ZIP outside the repository; `.gitignore` blocks ZIP and CSV files as a safeguard.
 
+## Next match and schedule (`data/calendario.csv`)
+
+The "Próximo jogo" section between the header and the tabs reads `data/calendario.csv`. The site shows the first match dated today or later, plus head-to-head stats against that opponent: wins/draws/losses, goals for and against, the last 10 meetings, top scorers among this season's squad, and other numbers. The buttons under the title switch to later fixtures.
+
+This file is **not encrypted**. A match schedule is public information. Edit it in any text editor or in Excel, then upload it again to the repository.
+
+| Column | Example | Notes |
+|---|---|---|
+| `data` | `2026-10-19` | Keep the `AAAA-MM-DD` format. `dd/mm/aaaa` also works. |
+| `hora` | `20:00` | Brasília time. Leave blank if not yet set. |
+| `competicao`, `rodada` | `Brasileirão 2026`, `31ª rodada` | |
+| `mandante`, `visitante` | `Corinthians`, `Vitória` | Write `Corinthians` exactly, so the site knows home from away. |
+| `adversario` | `Vitória` | Must match the opponent's name in the data (as in the Confrontos tab), e.g. `Vasco da Gama`, `Atlético-MG`. |
+| `estadio`, `cidade` | `Neo Química Arena`, `São Paulo/SP` | |
+| `onde_assistir` | `SporTV, Premiere` | |
+| `confirmado` | `sim` / `não` | `não` shows an "a confirmar" tag. |
+| `observacoes` | | Optional, shown under the title. |
+
+If you save from Excel, choose **CSV UTF-8**. Comma or semicolon separators both work. "Elenco atual" means every player who appeared in the latest season in the data.
+
 ## Links into the site
 
 - `#visao`, `#confrontos`, `#jogadores`, `#jogos` open a tab

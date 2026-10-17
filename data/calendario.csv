@@ -1,0 +1,9 @@
+﻿data,hora,competicao,rodada,mandante,visitante,adversario,estadio,cidade,onde_assistir,confirmado,observacoes
+2026-10-19,20:00,Brasileirão 2026,31ª rodada,Corinthians,Vitória,Vitória,Neo Química Arena,São Paulo/SP,"SporTV, Premiere",sim,
+2026-10-24,18:30,Brasileirão 2026,32ª rodada,Vasco da Gama,Corinthians,Vasco da Gama,São Januário,Rio de Janeiro/RJ,"Record, CazéTV, Premiere",sim,
+2026-10-30,20:00,Brasileirão 2026,33ª rodada,Corinthians,Mirassol,Mirassol,Neo Química Arena,São Paulo/SP,"SporTV, Premiere",sim,
+2026-11-04,21:30,Brasileirão 2026,34ª rodada,São Paulo,Corinthians,São Paulo,Morumbis,São Paulo/SP,"Globo, CazéTV, Premiere",sim,
+2026-11-18,,Brasileirão 2026,35ª rodada,Corinthians,Botafogo,Botafogo,Neo Química Arena,São Paulo/SP,,não,Data-base da CBF; horário e transmissão a definir
+2026-11-22,,Brasileirão 2026,36ª rodada,Atlético-MG,Corinthians,Atlético-MG,Arena MRV,Belo Horizonte/MG,,não,Data-base; pode ser 21/11
+2026-11-29,,Brasileirão 2026,37ª rodada,Corinthians,Grêmio,Grêmio,Neo Química Arena,São Paulo/SP,,não,Data-base; pode ser 28/11
+2026-12-02,,Brasileirão 2026,38ª rodada,Remo,Corinthians,Remo,Mangueirão,Belém/PA,,não,Data-base da CBF; horário e transmissão a definir

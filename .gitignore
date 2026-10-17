@@ -4,3 +4,5 @@
 *.xlsx
 dados_privados/
 __pycache__/
+# O calendário é público e precisa ir para o site
+!data/calendario.csv

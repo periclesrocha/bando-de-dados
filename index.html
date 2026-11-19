@@ -1068,7 +1068,7 @@ function renderNext() {
         <ul class="rlist compact">${lastHTML}</ul>
       </div>
       <div class="card">
-        <div class="card-head"><div><h3>Artilheiros do elenco</h3><p class="sub">Gols contra o ${esc(opp)} de quem entrou em campo em ${S.squadYear}</p></div></div>
+        <div class="card-head"><div><h3>Artilheiros do confronto</h3><p class="sub">Quem do elenco atual (jogou em ${S.squadYear}) mais marcou contra o ${esc(opp)}</p></div></div>
         ${scorers.length ? `<ul class="scorers">${scorers.map((a, i) => `<li><button data-pk="p${a.i}"><span class="pos">${i + 1}</span><span class="nm">${esc(S.players[a.i][1])}</span><span class="gl">${plural(a.g, 'gol', 'gols')}<small>${plural(a.j, 'jogo', 'jogos')}</small></span></button></li>`).join('')}</ul>` : `<p class="muted small">Nenhum jogador do elenco de ${S.squadYear} marcou contra o ${esc(opp)}.</p>`}
         ${mostGames.length ? `<p class="small muted" style="margin:12px 0 4px">Mais jogos contra o ${esc(opp)}, sem gol</p><ul class="scorers">${mostGames.map((a) => `<li><button data-pk="p${a.i}"><span class="pos">·</span><span class="nm">${esc(S.players[a.i][1])}</span><span class="gl"><small>${plural(a.j, 'jogo', 'jogos')}</small></span></button></li>`).join('')}</ul>` : ''}
         <p class="small muted" style="margin:12px 0 0">${plural(faced.length, 'jogador do elenco já enfrentou', 'jogadores do elenco já enfrentaram')} o ${esc(opp)}.</p>
